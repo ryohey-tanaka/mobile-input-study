@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Mobile Input Study - Survey Edition</title>
+    <title>Chameleon Typing Test - Grand Survey Edition (Snap v7)</title>
     <style>
         html, body { 
             height: 100%; overflow: hidden; margin: 0; padding: 10px; 
@@ -23,6 +23,38 @@
         .key { flex: 1; background: #fff; border: 1px solid #ccc; border-radius: 6px; font-size: 22px; font-weight: bold; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 0 #bbb; pointer-events: none; }
         #final-area { display: none; text-align: center; padding: 20px; }
         #save-btn { background: #28a745; color: white; border: none; padding: 20px; border-radius: 10px; font-size: 20px; width: 100%; font-weight: bold; margin-top: 20px; }
+
+        #explanation-area { 
+            display: none; 
+            padding: 22px; 
+            background: #fff; 
+            border-radius: 14px; 
+            line-height: 1.7; 
+            font-size: 16px; 
+            color: #333; 
+            max-width: 720px; 
+            margin: 0 auto; 
+            box-sizing: border-box;
+        }
+        #explanation-area h2 { text-align: center; color: #333; }
+        #explanation-area h3 { color: #333; margin-top: 24px; }
+        .notice-box { 
+            background: #f7f9fc; 
+            border-left: 5px solid #007bff; 
+            padding: 12px; 
+            margin: 16px 0; 
+            border-radius: 8px;
+        }
+        .return-note { 
+            font-weight: bold; 
+            text-align: center; 
+            background: #fff3cd; 
+            padding: 16px; 
+            border-radius: 10px; 
+            margin-top: 22px;
+            border: 1px solid #ffe08a;
+        }
+
     </style>
 </head>
 <body>
@@ -48,6 +80,45 @@
 <div id="final-area">
     <h2>テスト終了</h2>
     <button id="save-btn" onclick="saveData()">CSVを保存して提出</button>
+</div>
+
+<div id="explanation-area">
+    <h2>ご協力ありがとうございました</h2>
+
+    <p>本テストにご参加いただき、誠にありがとうございました。</p>
+
+    <p>今回のテストは、<strong>スマートフォンで文字入力にストレスを感じる場面を、より快適に利用できる技術の実現を目指すため</strong>の調査でした。</p>
+
+    <div class="notice-box">
+        <p>今回使用していただいた入力方式には、</p>
+        <p><strong>「押したいキーを狙ったものの、少し指がずれてしまった場合でも、『押したかった』という意図をできるだけ正しく入力へ反映できるよう補正する仕組み」</strong></p>
+        <p>を取り入れていました。</p>
+    </div>
+
+    <p>そのため、<strong>補正対象となる範囲を超えて押されたキーについては、誤った文字を入力しないよう、入力されない場合がありました。</strong></p>
+
+    <p>これは、<strong>誤った文字を入力してしまうことよりも、「押したつもり」をできるだけ正しく届け、誤入力そのものを減らすこと</strong>を目的とした設計です。</p>
+
+    <h3>このあとアンケートへのご協力をお願いします</h3>
+
+    <p>このあとは<strong>クラウドワークスのアンケート画面へ戻り</strong>、実際に使用して感じたことを率直にご回答ください。</p>
+
+    <ul>
+        <li>入力しやすかったか</li>
+        <li>誤入力が減ったと感じたか</li>
+        <li>入力時のストレスが軽減したか</li>
+        <li>その他、気づいたことや改善してほしい点</li>
+    </ul>
+
+    <p>などについて、ご意見をいただけますと幸いです。</p>
+
+    <p>皆様からいただいたご意見は、<strong>スマートフォン入力で困っている方々が、より快適に利用できる技術の実現を目指すため</strong>に活用させていただきます。</p>
+
+    <p>ご協力、誠にありがとうございました。</p>
+
+    <div class="return-note">
+        ブラウザを閉じて、クラウドワークスのアンケート画面へお戻りください。
+    </div>
 </div>
 
 <script>
@@ -159,6 +230,10 @@
         a.href = window.URL.createObjectURL(blob);
         a.download = `survey_v7_final_${deviceNameInput}_${Date.now()}.csv`;
         a.click();
+
+        document.getElementById('final-area').style.display = 'none';
+        document.getElementById('explanation-area').style.display = 'block';
+        document.body.style.overflow = 'auto';
     }
 </script>
 </body>
